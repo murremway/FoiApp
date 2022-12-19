@@ -21,7 +21,7 @@ jobs:
       - name: Run the Maven verify phase
         run: mvn --batch-mode --update-snapshots verify
       - name: sonar
-        run: mvn sonar:sonar -Dsonar.login=25bcb56a4055356658d18d23110ae7a8c5fb7611  
+        run: org.sonarsource.scanner.maven:sonar  
       - name: upload artifacts
         run: mkdir staging && cp target/*.war staging
       - uses: actions/upload-artifact@v2
