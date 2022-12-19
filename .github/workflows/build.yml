@@ -18,12 +18,13 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        with:
-           projectBaseDir: my-custom-directory
-          # GITHUB_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
-          # SONAR_TOKEN: ${{ env.SONAR_TOKEN }}
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          # SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+        
       - name: upload artifacts
         run: mkdir staging && cp target/*.war staging
       - uses: actions/upload-artifact@v2
