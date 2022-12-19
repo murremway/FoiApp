@@ -21,8 +21,9 @@ jobs:
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         with:
+           projectBaseDir: my-custom-directory
           # GITHUB_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
-          SONAR_TOKEN: ${{ env.SONAR_TOKEN }}
+          # SONAR_TOKEN: ${{ env.SONAR_TOKEN }}
       - name: upload artifacts
         run: mkdir staging && cp target/*.war staging
       - uses: actions/upload-artifact@v2
