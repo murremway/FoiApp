@@ -15,14 +15,17 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <plugin>
-  <artifactId>maven-war-plugin</artifactId>
-  <version>3.0.0</version>
-</plugin>
   <properties>
   <sonar.organization>murremway</sonar.organization>
   <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 </properties>
+<plugin>
+  <artifactId>maven-war-plugin</artifactId>
+  <version>2.6</version>
+  <configuration>
+    <failOnMissingWebXml>false</failOnMissingWebXml>
+  </configuration>
+</plugin>
   <build>
     <finalName>FoiApp</finalName>
   </build>
