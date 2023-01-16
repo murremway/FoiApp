@@ -2,7 +2,7 @@
 FROM maven:3.6.3-jdk-8
 
 # Copy the CSS file and pom.xml to the container
-COPY webapp /home/runner/work/FoiApp/FoiApp/target/FoiApp
+COPY webapp /home/runner/work/FoiApp/target/FoiApp
 # COPY web.xml /home/runner/work/FoiApp/FoiApp/target/FoiApp/webapp/WEB-INF
 COPY pom.xml /home/runner/work/FoiApp
 
@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y python3
 FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
-COPY /home/runner/work/FoiApp/FoiApp/target/FoiApp.war /usr/share/nginx/html
+COPY /home/runner/work/FoiApp/target/FoiApp.war /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
