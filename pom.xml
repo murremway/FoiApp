@@ -16,9 +16,7 @@
     </dependency>
   </dependencies>
   <properties>
-    <properties>
     <failOnMissingWebXml>false</failOnMissingWebXml>   
-</properties>
   <sonar.organization>murremway</sonar.organization>
   <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 </properties>
