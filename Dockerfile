@@ -8,6 +8,7 @@ COPY pom.xml /home/runner/work/FoiApp
 
 # Build the CSS file with Maven
 RUN mvn -f /home/runner/work/FoiApp/pom.xml clean package
+RUN apt-get update && apt-get install -y python3
 
 # Serve the CSS file using an HTTP server
 CMD ["python3", "-m", "http.server", "8080"]
