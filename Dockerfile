@@ -10,6 +10,8 @@ COPY pom.xml /FoiApp/pom.xml
 # RUN mvn -f //FoiApp/pom.xml clean package
 RUN apt-get update && apt-get install -y python3
 
+EXPOSE 80
+
 # Serve the CSS file using an HTTP server
 CMD ["python3", "-m", "http.server", "80"]
 
