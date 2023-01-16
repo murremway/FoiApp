@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y python3
 FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
-COPY /home/runner/work/FoiApp/target/FoiApp.war /usr/share/nginx/html
+COPY /FoiApp/target/FoiApp.war /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
