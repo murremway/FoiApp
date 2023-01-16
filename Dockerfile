@@ -1,10 +1,4 @@
-FROM node:10-slim
-
-WORKDIR /app
-COPY . .
-
-RUN npm install
-
-EXPOSE 8080
-
-CMD ["node", "server.js"]
+FROM nginx:latest
+COPY ./dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
