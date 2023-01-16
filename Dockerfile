@@ -7,7 +7,7 @@ COPY webapp /FoiApp/webapp
 COPY pom.xml /FoiApp/pom.xml
 
 # Build the CSS file with Maven
-RUN mvn -f //FoiApp/pom.xml clean package
+# RUN mvn -f //FoiApp/pom.xml clean package
 RUN apt-get update && apt-get install -y python3
 
 # Serve the CSS file using an HTTP server
