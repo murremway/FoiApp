@@ -3,7 +3,7 @@ FROM maven:3.6.3-jdk-8
 
 # Copy the CSS file and pom.xml to the container
 COPY webapp /home/runner/work/FoiApp/FoiApp/target/FoiApp
-COPY web.xml /home/runner/work/FoiApp/FoiApp/target/FoiApp/webapp/WEB-INF
+# COPY web.xml /home/runner/work/FoiApp/FoiApp/target/FoiApp/webapp/WEB-INF
 COPY pom.xml /home/runner/work/FoiApp
 
 # Build the CSS file with Maven
