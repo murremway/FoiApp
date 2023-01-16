@@ -1,8 +1,8 @@
 # Use an existing Maven image as the base
-FROM maven:3.6.3-jdk-8
+FROM nginx:latest
 
 # Copy the CSS file and pom.xml to the container
-COPY webapp /FoiApp/webapp /usr/share/nginx/html
+COPY webapp /usr/share/nginx/html
 # COPY web.xml /home/runner/work/FoiApp/FoiApp/target/FoiApp/webapp/WEB-INF
 COPY pom.xml /FoiApp/pom.xml
 
