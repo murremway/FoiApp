@@ -10,4 +10,5 @@ COPY pom.xml /home/runner/work/FoiApp
 RUN mvn -f /home/runner/work/FoiApp/pom.xml clean package
 
 # Serve the CSS file using an HTTP server
-CMD ["python", "-m", "http.server", "8080"]
+CMD ["python3", "-m", "http.server", "8080"]
+
