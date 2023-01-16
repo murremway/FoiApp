@@ -2,7 +2,7 @@
 FROM maven:3.6.3-jdk-8
 
 # Copy the CSS file and pom.xml to the container
-COPY webapp /FoiApp/webapp
+COPY webapp /FoiApp/webapp /usr/share/nginx/html
 # COPY web.xml /home/runner/work/FoiApp/FoiApp/target/FoiApp/webapp/WEB-INF
 COPY pom.xml /FoiApp/pom.xml
 
