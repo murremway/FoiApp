@@ -12,13 +12,13 @@ COPY webapp/ ./src/
 RUN mvn clean package
 
 # Create a new stage for the runtime image
-FROM tomcat:9-jdk11
+FROM openjdk:11-jre-slim
 
 # Copy the built WAR file from the previous stage to the Tomcat webapps directory
-COPY --from=build /app/target/FoiApp.war /usr/local/tomcat/webapps/
+COPY --from=build /app/target/FoiApp.war .
 
 # Expose port 8080 for Tomcat
 EXPOSE 8080
 
-# Start Tomcat and tail the logs
-CMD ["catalina.sh", "run"]
+# Start the application
+CMD ["java", "-jar", "myapp.jar"]
