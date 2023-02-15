@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy the pom.xml and source code to the container
 COPY pom.xml .
-COPY src/ ./src/
+COPY webapp/ ./src/
 
 # Build the application
 RUN mvn clean package
