@@ -18,7 +18,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the built JAR file from the previous stage
-COPY --from=build /app/target/myapp.jar .
+COPY --from=build /app/target/foiapp.jar .
 
 # Start the application
 CMD ["java", "-jar", "myapp.jar"]
