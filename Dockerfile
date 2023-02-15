@@ -1,22 +1,24 @@
-# Use an existing Maven image as the base
-FROM maven:3.6.3-jdk-8
+# Use an official maven runtime as a parent image
+FROM maven:3.8.3-jdk-11 AS build
 
-# Copy the CSS file and pom.xml to the container
-COPY webapp /home/runner/work/FoiApp/target/FoiApp
-# COPY web.xml /home/runner/work/FoiApp/FoiApp/target/FoiApp/webapp/WEB-INF
-COPY pom.xml /home/runner/work/FoiApp
+# Set the working directory to /app
+WORKDIR /app
 
-# Build the CSS file with Maven
-RUN mvn -f /home/runner/work/FoiApp/pom.xml clean package
-RUN apt-get update && apt-get install -y python3
+# Copy the pom.xml and source code to the container
+COPY pom.xml .
+COPY src/ ./src/
 
+# Build the application
+RUN mvn clean package
 
-# Use official nginx image as the base image
-FROM nginx:latest
+# Create a new stage for the runtime image
+FROM openjdk:11-jre-slim
 
-# Copy the build output to replace the default nginx contents.
-COPY webapp /usr/share/nginx/html
+# Set the working directory to /app
+WORKDIR /app
 
-# Expose port 80
-EXPOSE 8080
-CMD ["nginx", "-g", "daemon off;"]
+# Copy the built JAR file from the previous stage
+COPY --from=build /app/target/myapp.jar .
+
+# Start the application
+CMD ["java", "-jar", "myapp.jar"]
