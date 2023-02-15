@@ -15,7 +15,7 @@ RUN mvn clean package
 FROM nginx:1.21.3-alpine
 
 # Copy the built WAR file from the previous stage to the Tomcat webapps directory
-COPY --from=build /app/target/FoiApp.war /usr/share/nginx/html
+COPY webapp /usr/share/nginx/html
 
 # Expose port 8080 for Tomcat
 EXPOSE 80
