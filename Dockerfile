@@ -19,4 +19,4 @@ COPY webapp /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 8080
-CMD [ "index.html" ]
+CMD ["nginx", "-g", "daemon off;"]
