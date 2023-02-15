@@ -21,4 +21,4 @@ COPY --from=build /app/target/FoiApp.war .
 EXPOSE 8080
 
 # Start the application
-CMD ["java", "-jar", "myapp.jar"]
+CMD ["java", "-war", "FoiApp.war"]
