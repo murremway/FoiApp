@@ -11,14 +11,17 @@ COPY webapp/ ./src/
 # Build the application
 RUN mvn clean package
 
-# Create a new stage for the runtime image
-FROM openjdk:11-jre-slim
+# Use an official Nginx image as a parent image for the final stage
+FROM nginx:1.21.3-alpine
+
+# Copy the Nginx configuration file to the container
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy the built WAR file from the previous stage to the Tomcat webapps directory
-COPY --from=build /app/target/FoiApp.war .
+COPY --from=build /app/target/FoiApp.war /usr/share/nginx/html
 
 # Expose port 8080 for Tomcat
-EXPOSE 8080
+EXPOSE 80
 
-# Start the application
-CMD ["java", "-war", "FoiApp.war"]
+# Start the Nginx web server
+CMD ["nginx", "-g", "daemon off;"]
