@@ -2,8 +2,6 @@ name: coverall
 
 on: ["push", "pull_request"]
 
-name: Test Coveralls Parallel
-
 jobs:
   test:
     runs-on: ubuntu-latest
